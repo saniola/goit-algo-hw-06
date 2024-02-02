@@ -4,18 +4,12 @@ import matplotlib.pyplot as plt
 # Creating a graph
 G = nx.Graph()
 
-# Adding initial nodes and edges
-G.add_node("Luke")
-G.add_node("Leia")
-G.add_node("Han")
-G.add_node("Chewbacca")
-G.add_edge("Luke", "Leia", weight=5)
-G.add_edge("Luke", "Han", weight=3)
-G.add_edge("Leia", "Chewbacca", weight=2)
-G.add_edge("Han", "Chewbacca", weight=4)
-
-# Adding 10 new users
-new_users = [
+# Adding characters
+characters = [
+    "Luke",
+    "Leia",
+    "Han",
+    "Chewbacca",
     "DarthVader",
     "ObiWan",
     "Yoda",
@@ -28,17 +22,17 @@ new_users = [
     "Padme",
 ]
 
-for user in new_users:
-    G.add_node(user)
+for character in characters:
+    G.add_node(character)
 
 # Adding random connections between new users and existing ones
 import random
 
-for user1 in new_users:
-    for user2 in G.nodes():
-        if user1 != user2 and not G.has_edge(user1, user2):
+for character1 in characters:
+    for character2 in G.nodes():
+        if character1 != character2 and not G.has_edge(character1, character2):
             weight = random.randint(1, 10)  # Random weight for the connection
-            G.add_edge(user1, user2, weight=weight)
+            G.add_edge(character1, character2, weight=weight)
 
 # Visualizing the graph
 pos = nx.spring_layout(G)
@@ -52,5 +46,4 @@ plt.show()
 print("Number of nodes:", G.number_of_nodes())
 print("Number of edges:", G.number_of_edges())
 print("List of nodes:", list(G.nodes()))
-print("List of edges:", list(G.edges()))
 print("Node degrees:", dict(G.degree()))
