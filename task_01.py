@@ -1,6 +1,5 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-import random
 
 # Creating a graph
 G = nx.Graph()
